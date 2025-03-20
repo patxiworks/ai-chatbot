@@ -37,7 +37,7 @@ function ChatMessageData({ messageData }: { messageData: JSONValue }) {
 export default function ChatMessage(chatMessage: Message) {
   const { isCopied, copyToClipboard } = useCopyToClipboard({ timeout: 2000 });
   return (
-    <div className="flex items-start gap-4 pr-5 pt-5">
+    <div className="flex items-start gap-4 pt-5">
       <ChatAvatar role={chatMessage.role} />
       <div className="group flex flex-1 justify-between gap-2">
         <div className="flex-1 space-y-4">

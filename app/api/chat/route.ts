@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createChatEngine } from './engine';
 import { LlamaIndexStream } from './llamaindex-stream';
 
+import { fetchProductDetails } from '../saleor/saleor';
+import { transformProductToDocument } from '../saleor/transformer';
+
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
@@ -40,6 +43,13 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    console.log(body)
+
+    //const { productId, query } = await request.json();
+
+    //const product = await fetchProductDetails("UHJvZHVjdDoxNTM=");
+    //const document = transformProductToDocument(product);
 
     const llm = new TogetherLLM({
       model: 'mistralai/Mixtral-8x7B-Instruct-v0.1',

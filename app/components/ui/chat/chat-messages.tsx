@@ -35,7 +35,7 @@ export default function ChatMessages(
   }, [messageLength, lastMessage]);
 
   return (
-    <div className="w-full rounded-xl bg-white p-4 shadow-xl pb-0">
+    <div className="w-full bg-white p-4 pr-2 pt-0 shadow-xl pb-0">
       <div
         className="flex h-[50vh] flex-col gap-5 divide-y overflow-y-auto pb-4"
         ref={scrollableChatContainerRef}
