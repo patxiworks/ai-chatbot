@@ -35,9 +35,9 @@ export default function ChatMessages(
   }, [messageLength, lastMessage]);
 
   return (
-    <div className="w-full bg-white p-4 pr-2 pt-0 shadow-xl pb-0">
+    <div className="flex-1 w-full bg-white p-4 pr-2 pt-0 shadow-xl pb-0">
       <div
-        className="flex h-[50vh] flex-col gap-5 divide-y overflow-y-auto pb-4"
+        className="flex flex-col h-[60vh] gap-5 divide-y overflow-y-auto pb-4"
         ref={scrollableChatContainerRef}
       >
         {props.messages.map((m) => (
@@ -49,7 +49,7 @@ export default function ChatMessages(
           </div>
         )}
       </div>
-      <div className="flex justify-end py-4">
+      <div className="fixed bottom-[41vh] right-0 p-4 ">
         <ChatActions
           reload={props.reload}
           stop={props.stop}

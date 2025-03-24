@@ -21,7 +21,7 @@ const nextConfig = {
         headers: [
           {
             key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' localhost saleor-front-two.vercel.app;",
+            value: "frame-ancestors 'self' saleor-front-two.vercel.app;",
           },
         ],
       },
