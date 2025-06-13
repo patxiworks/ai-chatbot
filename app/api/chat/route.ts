@@ -44,9 +44,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(messages)
-    console.log(userMessage)
-    console.log(body)
+    //console.log(messages)
+    //console.log(userMessage)
+    //console.log(body)
 
     //const { productId, query } = await request.json();
 

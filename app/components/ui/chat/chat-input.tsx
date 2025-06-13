@@ -21,45 +21,45 @@ export default function ChatInput(
 ) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [autoSubmitted, setAutoSubmitted] = useState(false);
-  const searchParams = useSearchParams(); // Hook to access query parameters
+  //const searchParams = useSearchParams(); // Hook to access query parameters
 
   // Function to handle automatic submission
-  useEffect(() => {
-    // Get the query parameter (e.g., 'message' or any other you want)
-    const autoMessage = searchParams.get('message');
+  // useEffect(() => {
+  //   // Get the query parameter (e.g., 'message' or any other you want)
+  //   const autoMessage = searchParams.get('message');
     
-    if (autoMessage && !autoSubmitted) {
-      // Simulate input change
-      const event = {
-        target: {
-          name: 'message',
-          value: autoMessage,
-        },
-      } as React.ChangeEvent<HTMLInputElement>;
+  //   if (autoMessage && !autoSubmitted) {
+  //     // Simulate input change
+  //     const event = {
+  //       target: {
+  //         name: 'message',
+  //         value: autoMessage,
+  //       },
+  //     } as React.ChangeEvent<HTMLInputElement>;
       
-      props.handleInputChange(event);
+  //     props.handleInputChange(event);
       
-      // Submit the form after a small delay to ensure state is updated
-      const timer = setTimeout(() => {
-        const submitEvent = {
-          preventDefault: () => {},
-        } as React.FormEvent<HTMLFormElement>;
+  //     // Submit the form after a small delay to ensure state is updated
+  //     const timer = setTimeout(() => {
+  //       const submitEvent = {
+  //         preventDefault: () => {},
+  //       } as React.FormEvent<HTMLFormElement>;
         
-        if (imageUrl) {
-          props.handleSubmit(submitEvent, {
-            data: { imageUrl: imageUrl },
-          });
-          setImageUrl(null);
-        } else {
-          props.handleSubmit(submitEvent);
-        }
+  //       if (imageUrl) {
+  //         props.handleSubmit(submitEvent, {
+  //           data: { imageUrl: imageUrl },
+  //         });
+  //         setImageUrl(null);
+  //       } else {
+  //         props.handleSubmit(submitEvent);
+  //       }
         
-        setAutoSubmitted(true);
-      }, 100);
+  //       setAutoSubmitted(true);
+  //     }, 100);
       
-      return () => clearTimeout(timer);
-    }
-  }, [searchParams, autoSubmitted, props, imageUrl]);
+  //     return () => clearTimeout(timer);
+  //   }
+  // }, [searchParams, autoSubmitted, props, imageUrl]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (imageUrl) {
