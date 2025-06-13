@@ -27,7 +27,8 @@ export default function ChatSection() {
   }, [messages, data]);
 
   return (
-    <div className="flex flex-col flex-1 space-y-0 max-w-5xl w-full">
+    // <div className="flex flex-col flex-1 space-y-0 max-w-5xl w-full">
+    <div className="flex-1 flex flex-col max-w-5xl w-full mx-auto overflow-hidden">
       <ChatMessages
         messages={transformedMessages}
         isLoading={isLoading}

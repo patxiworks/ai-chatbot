@@ -36,10 +36,15 @@ export default function ChatMessages(
 
   return (
     <div className="flex-1 w-full bg-white p-4 pr-2 pt-0 shadow-xl pb-0">
+    {/* <div className="flex-1 overflow-y-auto p-4 space-y-4"> */}
       <div
-        className="flex flex-col h-[60vh] gap-5 divide-y overflow-y-auto pb-4"
+        className="flex flex-col h-[85vh] gap-5 divide-y overflow-y-auto pb-4"
         ref={scrollableChatContainerRef}
       >
+      {/* <div
+        className="space-y-4"
+        ref={scrollableChatContainerRef}
+      > */}
         {props.messages.map((m) => (
           <ChatMessage key={m.id} {...m} />
         ))}
