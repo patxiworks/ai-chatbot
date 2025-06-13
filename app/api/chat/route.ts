@@ -44,6 +44,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    console.log(messages)
+    console.log(userMessage)
     console.log(body)
 
     //const { productId, query } = await request.json();
@@ -65,9 +67,12 @@ export async function POST(request: NextRequest) {
       data?.imageUrl
     );
 
+    const contextUserMessage = `You are an expert on the life of Saint Josemaria Escriva. Use his biography to answer the question: ${userMessageContent}. If the question is not related to the book, say that you cannot answer it.`
+
     // Calling LlamaIndex's ChatEngine to get a streamed response
     const response = await chatEngine.chat({
-      message: userMessageContent,
+      //message: userMessageContent,
+      message: contextUserMessage,
       chatHistory: messages,
       stream: true,
     });

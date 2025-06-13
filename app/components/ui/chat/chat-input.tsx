@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "../button";
 import FileUploader from "../file-uploader";
 import { Input } from "../input";
@@ -19,6 +20,46 @@ export default function ChatInput(
   },
 ) {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [autoSubmitted, setAutoSubmitted] = useState(false);
+  const searchParams = useSearchParams(); // Hook to access query parameters
+
+  // Function to handle automatic submission
+  useEffect(() => {
+    // Get the query parameter (e.g., 'message' or any other you want)
+    const autoMessage = searchParams.get('message');
+    
+    if (autoMessage && !autoSubmitted) {
+      // Simulate input change
+      const event = {
+        target: {
+          name: 'message',
+          value: autoMessage,
+        },
+      } as React.ChangeEvent<HTMLInputElement>;
+      
+      props.handleInputChange(event);
+      
+      // Submit the form after a small delay to ensure state is updated
+      const timer = setTimeout(() => {
+        const submitEvent = {
+          preventDefault: () => {},
+        } as React.FormEvent<HTMLFormElement>;
+        
+        if (imageUrl) {
+          props.handleSubmit(submitEvent, {
+            data: { imageUrl: imageUrl },
+          });
+          setImageUrl(null);
+        } else {
+          props.handleSubmit(submitEvent);
+        }
+        
+        setAutoSubmitted(true);
+      }, 100);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [searchParams, autoSubmitted, props, imageUrl]);
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     if (imageUrl) {
@@ -75,7 +116,7 @@ export default function ChatInput(
           onFileUpload={handleUploadFile}
           onFileError={props.onFileError}
         /> */}
-        <Button type="submit" disabled={props.isLoading}>
+        <Button type="button" disabled={props.isLoading}>
           Send message
         </Button>
       </div>

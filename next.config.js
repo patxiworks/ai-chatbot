@@ -14,19 +14,19 @@ const nextConfig = {
       '/*': ['./cache/**/*'],
     },
   },
-  async headers() {
-    return [
-      {
-        source: '/(.*)', // Apply to all routes
-        headers: [
-          {
-            key: 'Content-Security-Policy',
-            value: "frame-ancestors 'self' saleor-front-two.vercel.app;",
-          },
-        ],
-      },
-    ];
-  },
+  // async headers() {
+  //   return [
+  //     {
+  //       source: '/(.*)', // Apply to all routes
+  //       headers: [
+  //         {
+  //           key: 'Content-Security-Policy',
+  //           value: "frame-ancestors 'self' saleor-front-two.vercel.app;",
+  //         },
+  //       ],
+  //     },
+  //   ];
+  // },
 };
 
 module.exports = nextConfig;
